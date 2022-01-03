@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>修改个人信息</title>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body style="background-image:url({% static 'assets/img/cover.jpg' %});-moz-background-size:100%; background-size:100%;">
+
+<div class="container">
+    <div class="row">
+        <form action="/amend/{{ us1 }}" class="form-register col-md-8 offset-md-2  border rounded-lg "  enctype="multipart/form-data"  method="POST"
+              style="margin-top: 200px; background-color: rgba(255,112,104,0.2);">
+
+            {% if user_form.captcha.errors %}
+                <div class="alert alert-warning">{{ user_form.captcha.errors }}</div>
+            {% elif message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+
+            {% csrf_token %}
+            <h3 class="text-center">修改个人信息</h3>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.user_name.label_tag }}
+                </div>
+                {{ user_form.user_name }}
+            </div>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.username.label_tag }}
+                </div>
+                {{ user_form.username }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.password1.label_tag }}
+                </div>
+                {{ user_form.password1 }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.password2.label_tag }}
+                </div>
+                {{ user_form.password2 }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.address.label_tag }}
+                </div>
+                {{ user_form.address }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.email.label_tag }}
+                </div>
+                {{ user_form.email }}
+            </div>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.numbers.label_tag }}
+                </div>
+                {{ user_form.numbers }}
+            </div>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.brithday.label_tag }}
+                </div>
+                {{ user_form.brithday }}
+            </div>
+            <div class="form-group">
+
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.img.label_tag }}
+                </div>
+                {{ user_form.img }}
+            </div>
+
+            <div class="form-group">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ user_form.sex.label_tag }}
+                </div>
+                {{ user_form.sex }}
+            </div>
+            
+
+            <div >
+                <button type="submit" class="btn btn-primary float-right">保存</button>
+            </div>
+        </form>
+    </div>
+</div> <!-- /container -->
+
+</body>
+</html>

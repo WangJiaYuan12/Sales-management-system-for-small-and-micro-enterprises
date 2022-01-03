@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册</title>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+</head>
+<body style="background-image:url({% static 'assets/img/cover.jpg' %});-moz-background-size:100%; background-size:100%;">
+
+<div class="container">
+    <div class="row">
+        <form action="{% url 'register' %}" class="form-register col-md-8 offset-md-2  border rounded-lg "  enctype="multipart/form-data"  method="post"
+              style="margin-top: 200px; background-color: rgba(255,112,104,0.2);">
+
+            {% if register_form.captcha.errors %}
+                <div class="alert alert-warning">{{ register_form.captcha.errors }}</div>
+            {% elif message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+
+            {% csrf_token %}
+            <h3 class="text-center">欢迎注册</h3>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.user_name.label_tag }}
+                </div>
+                {{ register_form.user_name }}
+            </div>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.username.label_tag }}
+                </div>
+                {{ register_form.username }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.password1.label_tag }}
+                </div>
+                {{ register_form.password1 }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.password2.label_tag }}
+                </div>
+                {{ register_form.password2 }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.address.label_tag }}
+                </div>
+                {{ register_form.address }}
+            </div>
+            <div class="form-group text-center">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.email.label_tag }}
+                </div>
+                {{ register_form.email }}
+            </div>
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.numbers.label_tag }}
+                </div>
+                {{ register_form.numbers }}
+            </div>
+
+            <div class="form-group text-center ">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.brithday.label_tag }}
+                </div>
+                {{ register_form.brithday }}
+            </div>
+
+            <div class="form-group">
+
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.img.label_tag }}
+                </div>
+                {{ register_form.img }}
+            </div>
+
+            <div class="form-group">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.sex.label_tag }}
+                </div>
+                {{ register_form.sex }}
+            </div>
+            <div class="form-group">
+                <div style="display:inline;" class="bg-white border rounded-lg">
+                    {{ register_form.captcha.label_tag }}
+                </div>
+                {{ register_form.captcha }}
+            </div>
+
+            <div >
+                <a class="btn btn-primary col-md-1 " href="{% url 'logo' %}">登录</a>
+                <button type="submit" class="btn btn-primary float-right">注册</button>
+            </div>
+        </form>
+    </div>
+</div> <!-- /container -->
+
+</body>
+</html>
